@@ -1,0 +1,194 @@
+// #include <iostream>
+// #include <vector>
+// #include <bits/stdc++.h> 
+// using namespace std;
+
+// int main()
+// {
+//     int n;
+//     cin>>n;
+//     vector <int> s;
+//     while (n--)
+//     {
+//         int d;
+//         cin>>d;
+//         s.push_back(d);
+//     }
+//     int s1=0;
+//     int h=0;
+//     int k =0;
+//     int j = s.size()-1;
+//     int i=0;
+//     while (s.size())
+//     {
+//         cout<<"*** "<<s.size()<<endl;
+//         i=0;
+//         if(s.size())
+//             j=s.size()-1;
+//         else
+//             j=0;
+//         cout<<"*** i "<<i<<endl;
+//         cout<<"*** j "<<j<<endl;   
+//         if(k%2==0)
+//         {
+//             if(s[i]>=s[j])
+//             {
+//                 s1+=s[i];
+//                 s.erase(s[i]);
+//             }
+//             else
+//             {
+//                 s1+=s[j];
+//                 s.erase(s[j]);
+//             }
+//         }
+//         else
+//         {
+//             if(s[i]>s[j])
+//             {
+//                 h+=s[i];
+//                 s.erase(s.begin());
+//             }
+//             else
+//             {
+//                 h+=s[j];
+//                 s.erase(s.end());;
+//             }
+//         }
+//         k++;
+//     }
+//     cout<<s1<<" "<<h<<endl;
+// }
+
+// #include <iostream>
+// #include <vector>
+// #include <bits/stdc++.h> 
+// using namespace std;
+
+
+// class t_data 
+// {
+//     public:
+//         int index;
+//         int contunte;
+//         int somme_ak;
+//         t_data *next;
+// };
+
+// t_data *new_elemment(int ind, int somme_ak, int cont)
+// {
+//     t_data *new1 = new t_data;
+//     new1->index = ind;
+//     new1->somme_ak = somme_ak;
+//     new1->contunte = cont;
+//     new1->next = NULL;
+//     return new1;
+// }
+
+// void add_back(t_data **list, t_data *new1)
+// {
+//     t_data *t;
+//     t=*list;
+//     if(*list==nullptr)
+//         *list=new1;
+//     else
+//     {
+//         while (t->next)
+//             t=t->next;
+//         t->next = new1;
+//     }
+// }
+
+// int main()
+// {
+//     t_data *list=nullptr;
+//     int n;
+//     cin>>n;
+//     vector <int>nub;
+
+//     while (n--)
+//     {
+//         int d;
+//         cin>>d;
+//         nub.push_back(d);        
+//     }
+
+//     sort(nub.begin(),nub.end());
+//     int i =0;
+//     while (i<nub.size())
+//     {
+//         if(i = 0 || (nub[i-1] != nub[i]))
+//         {
+//             int ind=0,somme_ak=0,cont=0;
+//             int j=0;
+//             t_data *new1;
+//             while (j<nub.size())
+//             {
+//                 if(nub[i]==nub[j]+1 || nub[i]==nub[j]-1)
+//                     somme_ak+=nub[i];
+//                 j++;
+//             }
+//             ind=i;
+//             cont = nub[i];
+//             new1=new_elemment(ind,somme_ak,cont);
+//             add_back(&list,new1);
+//         }
+//         i++;
+//     }
+
+    
+    
+// }
+
+#include <iostream>
+#include <vector>
+#include <bits/stdc++.h> 
+using namespace std;
+
+int main()
+{
+    int n;
+    int h=0;
+    int s=0;
+    cin>>n;
+    int n1=n;
+    int nub[n];
+    int i = 0;
+    while (n1--)
+        cin>>nub[i++];
+    int j = n-1,k=0;
+    i = 0;
+    while (k<n)
+    {
+        if(k%2==0)
+        {
+            if(nub[i]>nub[j])
+            {
+                s+=nub[i];
+                i++;
+            }
+            else
+            {
+                s+=nub[j];
+                j--;
+            }
+            
+        }
+        else
+        {
+            if(nub[i]>nub[j])
+            {
+                h+=nub[i];
+                i++;
+            }
+            else
+            {
+                h+=nub[j];
+                j--;
+            }
+        }
+        k++;
+    }
+    cout<<s<<" "<<h<<endl;
+    return 0;
+}
